@@ -6,6 +6,8 @@
   "author": "kritten <bugrpkvvuqrkcyorhobhnkiznizmvb>",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build -m pwa",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
   },
