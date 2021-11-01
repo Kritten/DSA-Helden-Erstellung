@@ -1,4 +1,4 @@
-# DSA Creator (dsa-creator)
+# DSA Creator (dsa-helden-erstellung)
 
 A Quasar Framework app
 

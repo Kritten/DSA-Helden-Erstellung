@@ -211,7 +211,7 @@ module.exports = configure((ctx) => ({
     builder: {
       // https://www.electron.build/configuration/configuration
 
-      appId: 'dsa-creator',
+      appId: 'dsa-helden-erstellung',
     },
 
     // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
