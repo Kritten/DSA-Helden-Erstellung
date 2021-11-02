@@ -1,17 +1,23 @@
 import { RouteRecordRaw } from 'vue-router';
+import ViewHome from '@/modules/home/home.view.vue';
+import ViewCreator from '@/modules/creator/creator.view.vue';
+import ViewAbout from '@/modules/about/about.view.vue';
 
 const routes: RouteRecordRaw[] = [
   {
+    name: 'home',
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Index.vue') }],
+    component: ViewHome,
   },
-
-  // Always leave this as last one,
-  // but you can also remove it
   {
-    path: '/:catchAll(.*)*',
-    component: () => import('pages/Error404.vue'),
+    name: 'creator',
+    path: '/creator',
+    component: ViewCreator,
+  },
+  {
+    name: 'about',
+    path: '/about',
+    component: ViewAbout,
   },
 ];
 

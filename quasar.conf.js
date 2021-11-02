@@ -11,6 +11,7 @@
 /* eslint func-names: 0 */
 /* eslint global-require: 0 */
 const { configure } = require('quasar/wrappers');
+const path = require('path');
 
 module.exports = configure((ctx) => ({
   // https://quasar.dev/quasar-cli/supporting-ts
@@ -42,7 +43,7 @@ module.exports = configure((ctx) => ({
   extras: [
     // 'ionicons-v4',
     // 'mdi-v5',
-    // 'fontawesome-v5',
+    'fontawesome-v5',
     // 'eva-icons',
     // 'themify',
     // 'line-awesome',
@@ -75,8 +76,8 @@ module.exports = configure((ctx) => ({
 
     // https://quasar.dev/quasar-cli/handling-webpack
     // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-    chainWebpack(/* chain */) {
-      //
+    chainWebpack(chain) {
+      chain.resolve.alias.set('@', path.resolve(__dirname, './src'));
     },
   },
 
