@@ -19,6 +19,21 @@
           </q-avatar>
           {{ t('app.label') }}
         </q-toolbar-title>
+
+        <q-btn
+          dense
+          flat
+          round
+          :icon="fabGithub"
+          type="a"
+          tooltip="test"
+          target="__blank"
+          href="https://github.com/Kritten/DSA-Helden-Erstellung"
+        >
+          <q-tooltip>
+            {{ t('common.github') }}
+          </q-tooltip>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -72,6 +87,7 @@ import {
   fasHome,
   fasInfo,
   fasMagic,
+  fabGithub,
 } from '@quasar/extras/fontawesome-v5';
 
 export default defineComponent({
@@ -108,6 +124,7 @@ export default defineComponent({
         isCollapsed.value = !isCollapsed.value;
       },
       routes,
+      fabGithub,
     };
   },
 });

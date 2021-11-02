@@ -1,4 +1,7 @@
 export default {
+  common: {
+    github: 'GitHub',
+  },
   app: {
     label: 'DSA Helden Erstellung',
   },
