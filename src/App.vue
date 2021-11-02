@@ -58,7 +58,9 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <q-page padding>
+        <router-view />
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>
@@ -67,9 +69,9 @@
 import { defineComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import {
+  fasHome,
   fasInfo,
   fasMagic,
-  fasTachometerAlt,
 } from '@quasar/extras/fontawesome-v5';
 
 export default defineComponent({
@@ -77,13 +79,13 @@ export default defineComponent({
   setup() {
     const { t } = useI18n();
     const isCollapsed = ref(false);
-    const miniState = ref(false);
+    const miniState = ref(true);
 
     const routes = [
       {
         label: t('home.label'),
         name: 'home',
-        icon: fasTachometerAlt,
+        icon: fasHome,
       },
       {
         label: t('creator.label'),
