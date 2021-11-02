@@ -58,7 +58,7 @@ module.exports = configure((ctx) => ({
     vueRouterMode: 'history', // available values: 'hash', 'history'
 
     // transpile: false,
-    // publicPath: '/',
+    publicPath: '/DSA-Helden-Erstellung',
 
     // Add dependencies for transpiling with Babel (Array of string/regex)
     // (from node_modules, which are by default not transpiled).
@@ -136,7 +136,10 @@ module.exports = configure((ctx) => ({
   // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
   pwa: {
     workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
-    workboxOptions: {}, // only for GenerateSW
+    workboxOptions: {
+      skipWaiting: true,
+      clientsClaim: true,
+    }, // only for GenerateSW
 
     // for the custom service worker ONLY (/src-pwa/custom-service-worker.[js|ts])
     // if using workbox in InjectManifest mode
