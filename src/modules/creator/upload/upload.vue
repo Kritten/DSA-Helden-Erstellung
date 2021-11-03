@@ -11,8 +11,9 @@
         <q-card-section>
           <div class="col-12">
             <q-btn
-              :label="t('creator.upload.defaultFile.go')"
+              :label="t('creator.upload.defaultFile.dsa5')"
               color="primary"
+              @click="load('dsa-5.yaml')"
             />
           </div>
         </q-card-section>
@@ -51,7 +52,6 @@
 import { defineComponent, watch, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import baseCard from '@/modules/app/base/base-card.vue';
-import { Config } from '@/modules/creator/types';
 import { useConfig } from '@/modules/creator/useConfig';
 
 export default defineComponent({
@@ -64,27 +64,34 @@ export default defineComponent({
 
     const { parseConfig } = useConfig();
 
-    const emitConfig = (config: Config) => {
+    const parseAndEmitConfig = (configString: string) => {
+      const config = parseConfig(configString);
       // eslint-disable-next-line no-console
       console.warn(config);
-      emit('upload', config);
+
+      if (config === null) {
+        throw Error('Invalid yaml-file');
+      } else {
+        emit('upload', config);
+      }
+    };
+
+    const load = async (fileName: string) => {
+      const response = await fetch(`configs/${fileName}`);
+      const configString = await response.text();
+
+      parseAndEmitConfig(configString);
     };
 
     watch(file, async () => {
       if (file.value !== null) {
         const configString = await file.value.text();
 
-        const config = parseConfig(configString);
-
-        if (config === null) {
-          throw Error('Invalid yaml-file');
-        } else {
-          emitConfig(config);
-        }
+        parseAndEmitConfig(configString);
       }
     });
 
-    return { t, file };
+    return { t, file, load };
   },
 });
 </script>

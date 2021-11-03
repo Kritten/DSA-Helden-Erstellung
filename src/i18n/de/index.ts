@@ -23,7 +23,7 @@ export default {
       defaultFile: {
         label: 'Standardeinstellungen',
         info: 'Starte sofort mit den Standardeinstellungen:',
-        go: 'Das Schwarze Auge (5. Edition)',
+        dsa5: 'Das Schwarze Auge (5. Edition)',
       },
     },
   },
