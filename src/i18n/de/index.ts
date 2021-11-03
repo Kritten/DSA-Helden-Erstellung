@@ -1,5 +1,6 @@
 export default {
   common: {
+    or: 'oder',
     github: 'GitHub',
   },
   app: {
@@ -15,6 +16,16 @@ export default {
   },
   creator: {
     label: 'Helden Erstellung',
+    upload: {
+      label: 'Datei-Upload',
+      file: 'Eigene yaml-Datei',
+      info: 'Lade eine eigene Konfigurationsdatei hoch.<br>Das ermöglicht es erfahrenen Spielern die Charaktererstellung an ihre Bedürfnisse anzupassen.',
+      defaultFile: {
+        label: 'Standardeinstellungen',
+        info: 'Starte sofort mit den Standardeinstellungen:',
+        go: 'Das Schwarze Auge (5. Edition)',
+      },
+    },
   },
   about: {
     label: 'Info',
