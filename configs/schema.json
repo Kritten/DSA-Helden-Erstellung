@@ -17,6 +17,70 @@
           },
           "description": {
             "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "if": {
+                "properties": {
+                  "type": {
+                    "const": "select"
+                  }
+                }
+              },
+              "then": {
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "oneOf": [
+                      {
+                        "const": "text"
+                      },
+                      {
+                        "const": "number"
+                      },
+                      {
+                        "const": "select"
+                      }
+                    ]
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "type",
+                  "data"
+                ]
+              },
+              "else": {
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "oneOf": [
+                      {
+                        "const": "text"
+                      },
+                      {
+                        "const": "number"
+                      },
+                      {
+                        "const": "select"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              }
+            }
           }
         },
         "required": [
