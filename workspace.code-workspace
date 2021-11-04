@@ -8,6 +8,9 @@
 		"vetur.validation.template": false,
 		"vetur.format.enable": false,
 		"typescript.tsdk": "node_modules/typescript/lib",
-		"vetur.experimental.templateInterpolationService": true
+		"vetur.experimental.templateInterpolationService": true,
+		"yaml.schemas": {
+			"./public/configs/schema.json": "/*.yaml"
+		}
 	}
 }
