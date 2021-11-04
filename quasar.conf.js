@@ -58,7 +58,7 @@ module.exports = configure((ctx) => ({
     vueRouterMode: 'history', // available values: 'hash', 'history'
 
     // transpile: false,
-    publicPath: '/DSA-Helden-Erstellung',
+    publicPath: '/DSA-Heldenerstellung',
 
     // Add dependencies for transpiling with Babel (Array of string/regex)
     // (from node_modules, which are by default not transpiled).
@@ -215,7 +215,7 @@ module.exports = configure((ctx) => ({
     builder: {
       // https://www.electron.build/configuration/configuration
 
-      appId: 'dsa-helden-erstellung',
+      appId: 'dsa-heldenerstellung',
     },
 
     // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain

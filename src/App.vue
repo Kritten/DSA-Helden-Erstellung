@@ -28,7 +28,7 @@
           type="a"
           tooltip="test"
           target="__blank"
-          href="https://github.com/Kritten/DSA-Helden-Erstellung"
+          href="https://github.com/Kritten/DSA-Heldenerstellung"
         >
           <q-tooltip>
             {{ t('common.github') }}
