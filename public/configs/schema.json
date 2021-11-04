@@ -20,22 +20,47 @@
           },
           "fields": {
             "type": "array",
-            "properties": {
-              "type": {
-                "type": "string",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "const": "text"
-                  },
-                  {
-                    "type": "string",
-                    "const": "number"
-                  },
-                  {
-                    "type": "string",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "oneOf": [
+                    {
+                      "const": "text"
+                    },
+                    {
+                      "const": "number"
+                    },
+                    {
+                      "const": "select"
+                    }
+                  ]
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "if": {
+                "properties": {
+                  "type": {
                     "const": "select"
                   }
+                }
+              },
+              "then": {
+                "required": [
+                  "type",
+                  "data"
+                ]
+              },
+              "else": {
+                "required": [
+                  "type"
                 ]
               }
             }

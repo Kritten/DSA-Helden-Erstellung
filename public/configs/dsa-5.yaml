@@ -5,6 +5,9 @@ steps:
       - type: select
         data:
           - Zauberer
+          - Krieger
+      - type: number
+      - type: text
   - title: Rasse
     description: In diesem Schritt wird die Rasse ausgewählt
   - title: Erfahrungsgrad
