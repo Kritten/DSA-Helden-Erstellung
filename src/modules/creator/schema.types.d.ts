@@ -15,5 +15,8 @@ export interface JSONSchemaFurDieDSAHeldenErstellung {
   steps: {
     title: string;
     description: string;
+    fields?: {
+      [k: string]: unknown;
+    }[];
   }[];
 }

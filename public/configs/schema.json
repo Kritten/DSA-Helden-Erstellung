@@ -22,29 +22,6 @@
             "type": "array",
             "items": {
               "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "oneOf": [
-                    {
-                      "const": "text"
-                    },
-                    {
-                      "const": "number"
-                    },
-                    {
-                      "const": "select"
-                    }
-                  ]
-                },
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
               "if": {
                 "properties": {
                   "type": {
@@ -53,12 +30,52 @@
                 }
               },
               "then": {
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "oneOf": [
+                      {
+                        "const": "text"
+                      },
+                      {
+                        "const": "number"
+                      },
+                      {
+                        "const": "select"
+                      }
+                    ]
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
                 "required": [
                   "type",
                   "data"
                 ]
               },
               "else": {
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "oneOf": [
+                      {
+                        "const": "text"
+                      },
+                      {
+                        "const": "number"
+                      },
+                      {
+                        "const": "select"
+                      }
+                    ]
+                  }
+                },
                 "required": [
                   "type"
                 ]
