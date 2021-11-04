@@ -17,6 +17,28 @@
           },
           "description": {
             "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "properties": {
+              "type": {
+                "type": "string",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "const": "text"
+                  },
+                  {
+                    "type": "string",
+                    "const": "number"
+                  },
+                  {
+                    "type": "string",
+                    "const": "select"
+                  }
+                ]
+              }
+            }
           }
         },
         "required": [

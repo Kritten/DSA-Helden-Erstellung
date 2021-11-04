@@ -1,6 +1,10 @@
 steps:
   - title: Klasse
     description: In diesem Schritt wird die Klasse ausgewählt
+    fields:
+      - type: select
+        data:
+          - Zauberer
   - title: Rasse
     description: In diesem Schritt wird die Rasse ausgewählt
   - title: Erfahrungsgrad
