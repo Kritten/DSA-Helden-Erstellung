@@ -2,20 +2,22 @@
   <div
     class="q-gutter-md"
   >
-    {{ config }}
     <upload
       v-if="config === null"
       @upload="config = $event"
     />
 
-    <wizard v-else />
+    <wizard
+      v-else
+      :config="config"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { Config } from '@/modules/creator/types';
+import { Config } from '@/modules/creator/config';
 import Upload from './upload/upload.vue';
 import Wizard from './wizard/wizard.vue';
 
