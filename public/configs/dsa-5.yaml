@@ -1,3 +1,5 @@
 steps:
-  - title: test
-  - title: abc
+  - title: Klasse
+    description: In diesem Schritt wird die Klasse ausgewählt
+  - title: Rasse
+    description: In diesem Schritt wird die Rasse ausgewählt

@@ -9,7 +9,8 @@
     "dev": "quasar dev",
     "build": "quasar build -m pwa",
     "lint": "eslint --ext .js,.ts,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "schema": "node scripts/jsonSchemaToTypescript.mjs"
   },
   "dependencies": {
     "@quasar/cli": "^1.2.2",
@@ -31,6 +32,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-vue": "^7.0.0",
+    "json-schema-to-typescript": "^10.1.5",
     "workbox-webpack-plugin": "^6.3.0"
   },
   "browserslist": [

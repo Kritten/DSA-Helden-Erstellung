@@ -1,9 +1,22 @@
 <template>
-  <div>wizard</div>
+  <q-stepper
+    v-model="stepCurrent"
+    color="primary"
+    animated
+  >
+    <q-step
+      v-for="(step, index) in config.steps"
+      :key="index"
+      :name="index"
+      :title="step.title"
+    >
+      {{ step.description }}
+    </q-step>
+  </q-stepper>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 import { Config } from '@/modules/creator/config';
 
 export default defineComponent({
@@ -15,7 +28,9 @@ export default defineComponent({
     },
   },
   setup() {
-    return {};
+    const stepCurrent = ref(0);
+
+    return { stepCurrent };
   },
 });
 </script>
