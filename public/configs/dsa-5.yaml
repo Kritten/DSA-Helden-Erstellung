@@ -3,3 +3,5 @@ steps:
     description: In diesem Schritt wird die Klasse ausgewählt
   - title: Rasse
     description: In diesem Schritt wird die Rasse ausgewählt
+  - title: Erfahrungsgrad
+    description: In diesem Schritt wird der Erfahrungsgrad ausgewählt
