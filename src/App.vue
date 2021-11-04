@@ -85,7 +85,6 @@ import { defineComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import {
   fasHome,
-  fasInfo,
   fasMagic,
   fabGithub,
 } from '@quasar/extras/fontawesome-v5';
@@ -108,12 +107,12 @@ export default defineComponent({
         name: 'creator',
         icon: fasMagic,
       },
-      {
-        label: t('about.label'),
-        name: 'about',
-        icon: fasInfo,
-        separator: true,
-      },
+      // {
+      //   label: t('about.label'),
+      //   name: 'about',
+      //   icon: fasInfo,
+      //   separator: true,
+      // },
     ];
 
     return {
