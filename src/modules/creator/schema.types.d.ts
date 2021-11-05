@@ -16,7 +16,9 @@ export interface JSONSchemaFurDieDSAHeldenErstellung {
     title: string;
     description: string;
     fields?: {
-      [k: string]: unknown;
+      id: string;
+      type: 'text' | 'number' | 'select';
+      data: string[];
     }[];
   }[];
 }

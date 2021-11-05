@@ -91,7 +91,11 @@ export default defineComponent({
       }
     });
 
-    return { t, file, load };
+    return {
+      t,
+      file,
+      load,
+    };
   },
 });
 </script>

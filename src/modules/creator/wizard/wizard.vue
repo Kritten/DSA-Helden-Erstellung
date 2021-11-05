@@ -3,6 +3,7 @@
     v-model="stepCurrent"
     color="primary"
     animated
+    vertical
   >
     <q-step
       v-for="(step, index) in config.steps"
@@ -10,7 +11,7 @@
       :name="index"
       :title="step.title"
     >
-      {{ step.description }}
+      <step :step="step" />
     </q-step>
   </q-stepper>
 </template>
@@ -18,9 +19,11 @@
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue';
 import { Config } from '@/modules/creator/config';
+import Step from '@/modules/creator/wizard/components/step.vue';
 
 export default defineComponent({
   name: 'Wizard',
+  components: { Step },
   props: {
     config: {
       required: true,

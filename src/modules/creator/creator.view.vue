@@ -19,16 +19,22 @@ import { defineComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { Config } from '@/modules/creator/config';
 import Upload from './upload/upload.vue';
-import Wizard from './wizard/wizard.vue';
+import Wizard from '@/modules/creator/wizard/wizard.vue';
 
 export default defineComponent({
   name: 'ViewCreator',
-  components: { Upload, Wizard },
+  components: {
+    Upload,
+    Wizard,
+  },
   setup() {
     const { t } = useI18n();
     const config = ref<Config | null>(null);
 
-    return { t, config };
+    return {
+      t,
+      config,
+    };
   },
 });
 </script>
