@@ -86,6 +86,13 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'prefer-promise-reject-errors': 'off',
 
+    'object-property-newline': ['error', {
+      allowAllPropertiesOnSameLine: false
+    }],
+
+    'no-unused-vars': 'off',
+    "@typescript-eslint/no-unused-vars": ["error"],
+
     // TypeScript
     quotes: ['warn', 'single', { avoidEscape: true }],
     '@typescript-eslint/explicit-function-return-type': 'off',
