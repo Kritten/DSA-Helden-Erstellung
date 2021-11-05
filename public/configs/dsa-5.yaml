@@ -8,7 +8,12 @@ steps:
           - Krieger
       - type: number
       - type: text
-  - title: Rasse
-    description: In diesem Schritt wird die Rasse ausgewählt
-  - title: Erfahrungsgrad
-    description: In diesem Schritt wird der Erfahrungsgrad ausgewählt
+  - title: Spezies
+    description: In diesem Schritt wird die Spezies ausgewählt
+    fields:
+      - type: select
+        data:
+          - Mensch
+          - Elf
+          - Halbelf
+          - Zwerg
