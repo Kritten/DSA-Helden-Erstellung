@@ -1,14 +1,71 @@
 steps:
-  - title: Klasse
+  - id: class
+    title: Klasse
     description: In diesem Schritt wird die Klasse ausgewählt
-    fields:
-      - type: select
-        data:
-          - Zauberer
-          - Krieger
-      - type: number
-      - type: text
-  - title: Rasse
-    description: In diesem Schritt wird die Rasse ausgewählt
-  - title: Erfahrungsgrad
+    sections:
+      - fields:
+          - id: class
+            label: Klasse
+            type: select
+            data:
+              - Zauberer
+              - Krieger
+  - id: species
+    title: Spezies
+    description: In diesem Schritt wird die Spezies ausgewählt
+    sections:
+      - fields:
+          - id: species
+            label: Spezies
+            type: select
+            data:
+              - Mensch
+              - Elf
+              - Halbelf
+              - Zwerg
+  - id: experience
+    title: Erfahrungsgrad
     description: In diesem Schritt wird der Erfahrungsgrad ausgewählt
+    sections:
+      - fields:
+          - id: experience
+            label: Erfahrungsgrad
+            type: select
+            data:
+              - Unerfahren
+              - Durschnittlich
+              - Erfahren
+              - Kompetent
+              - Meisterlich
+              - Brilliant
+              - Legendär
+  - id: culture
+    title: Kultur
+    description: In diesem Schritt kann eine Kultur gewählt werden. Ein Kulturpaket ist optional
+  - id: property-points
+    title: Eigenschaftspunkte
+    description: In diesem Schritt werden die Eigenschaftspunkte verteilt
+  - id: profession
+    title: Profession
+    description: In diesem Schritt kann eine Profession gewählt werden. Ein Professionspaket ist optional
+  - id: benefits
+    title: Vorteile
+    description: In diesem Schritt können Vorteile ausgewählt werden
+  - id: drawbacks
+    title: Nachteile
+    description: In diesem Schritt können Nachteile ausgewählt werden
+  - id: gains
+    title: Steigerungen
+    description: In diesem Schritt werden Fähigkeiten und Kampftechniken gesteigert
+  - id: special-abilities
+    title: Sonderfertigkeiten
+    description: In diesem Schritt können Sonderfertigkeiten ausgewählt werden
+  - id: base-values
+    title: Basiswerte
+    description: In diesem Schritt werden die Basiswerte aufgeschlüsselt
+  - id: equipment
+    title: Ausrüstung
+    description: In diesem Schritt kann Ausrüstung gekauft werden.
+  - id: name
+    title: Name
+    description: Der Name des Helden
