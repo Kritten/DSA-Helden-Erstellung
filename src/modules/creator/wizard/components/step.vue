@@ -1,5 +1,4 @@
 <template>
-  {{ dataStep }}
   <p>{{ step.description }}</p>
 
   <div class="row q-col-gutter-md">

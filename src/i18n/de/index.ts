@@ -2,6 +2,8 @@ export default {
   common: {
     or: 'oder',
     github: 'GitHub',
+    continue: 'Weiter',
+    back: 'Zurück',
   },
   app: {
     label: 'DSA Helden Erstellung',
