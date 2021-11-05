@@ -19,6 +19,16 @@ steps:
           - Zwerg
   - title: Erfahrungsgrad
     description: In diesem Schritt wird der Erfahrungsgrad ausgewählt
+    fields:
+      - type: select
+        data:
+          - Unerfahren
+          - Durschnittlich
+          - Erfahren
+          - Kompetent
+          - Meisterlich
+          - Brilliant
+          - Legendär
   - title: Kultur
     description: In diesem Schritt kann eine Kultur gewählt werden. Ein Kulturpaket ist optional
   - title: Eigenschaftspunkte
