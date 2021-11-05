@@ -17,3 +17,25 @@ steps:
           - Elf
           - Halbelf
           - Zwerg
+  - title: Erfahrungsgrad
+    description: In diesem Schritt wird der Erfahrungsgrad ausgewählt
+  - title: Kultur
+    description: In diesem Schritt kann eine Kultur gewählt werden. Ein Kulturpaket ist optional
+  - title: Eigenschaftspunkte
+    description: In diesem Schritt werden die Eigenschaftspunkte verteilt
+  - title: Profession
+    description: In diesem Schritt kann eine Profession gewählt werden. Ein Professionspaket ist optional
+  - title: Vorteile
+    description: In diesem Schritt können Vorteile ausgewählt werden
+  - title: Nachteile
+    description: In diesem Schritt können Nachteile ausgewählt werden
+  - title: Steigerungen
+    description: In diesem Schritt werden Fähigkeiten und Kampftechniken gesteigert
+  - title: Sonderfertigkeiten
+    description: In diesem Schritt können Sonderfertigkeiten ausgewählt werden
+  - title: Basiswerte
+    description: In diesem Schritt werden die Basiswerte aufgeschlüsselt
+  - title: Ausrüstung
+    description: In diesem Schritt kann Ausrüstung gekauft werden.
+  - title: Name
+    description: Der Name des Helden
