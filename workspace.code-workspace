@@ -11,6 +11,14 @@
 		"vetur.experimental.templateInterpolationService": true,
 		"yaml.schemas": {
 			"./schema/schema.json": "/public/configs/*.yaml"
-		}
+		},
+		"i18n-ally.localesPaths": [
+			"src/i18n"
+		],
+		"i18n-ally.enabledParsers": [
+			"ts"
+		],
+		"i18n-ally.displayLanguage": "de",
+		"i18n-ally.keystyle": "nested"
 	}
 }
