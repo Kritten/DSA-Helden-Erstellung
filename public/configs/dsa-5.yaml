@@ -1,5 +1,6 @@
 steps:
-  - title: Klasse
+  - id: class
+    title: Klasse
     description: In diesem Schritt wird die Klasse ausgewählt
     sections:
       - fields:
@@ -9,7 +10,8 @@ steps:
             data:
               - Zauberer
               - Krieger
-  - title: Spezies
+  - id: species
+    title: Spezies
     description: In diesem Schritt wird die Spezies ausgewählt
     sections:
       - fields:
@@ -21,7 +23,8 @@ steps:
               - Elf
               - Halbelf
               - Zwerg
-  - title: Erfahrungsgrad
+  - id: experience
+    title: Erfahrungsgrad
     description: In diesem Schritt wird der Erfahrungsgrad ausgewählt
     sections:
       - fields:
@@ -36,23 +39,33 @@ steps:
               - Meisterlich
               - Brilliant
               - Legendär
-  - title: Kultur
+  - id: culture
+    title: Kultur
     description: In diesem Schritt kann eine Kultur gewählt werden. Ein Kulturpaket ist optional
-  - title: Eigenschaftspunkte
+  - id: property-points
+    title: Eigenschaftspunkte
     description: In diesem Schritt werden die Eigenschaftspunkte verteilt
-  - title: Profession
+  - id: profession
+    title: Profession
     description: In diesem Schritt kann eine Profession gewählt werden. Ein Professionspaket ist optional
-  - title: Vorteile
+  - id: benefits
+    title: Vorteile
     description: In diesem Schritt können Vorteile ausgewählt werden
-  - title: Nachteile
+  - id: drawbacks
+    title: Nachteile
     description: In diesem Schritt können Nachteile ausgewählt werden
-  - title: Steigerungen
+  - id: gains
+    title: Steigerungen
     description: In diesem Schritt werden Fähigkeiten und Kampftechniken gesteigert
-  - title: Sonderfertigkeiten
+  - id: special-abilities
+    title: Sonderfertigkeiten
     description: In diesem Schritt können Sonderfertigkeiten ausgewählt werden
-  - title: Basiswerte
+  - id: base-values
+    title: Basiswerte
     description: In diesem Schritt werden die Basiswerte aufgeschlüsselt
-  - title: Ausrüstung
+  - id: equipment
+    title: Ausrüstung
     description: In diesem Schritt kann Ausrüstung gekauft werden.
-  - title: Name
+  - id: name
+    title: Name
     description: Der Name des Helden

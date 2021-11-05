@@ -116,6 +116,7 @@ export default defineComponent({
       ...props.options,
       label: baseInput.label.value,
       multiple,
+      emitValue: true,
     }));
 
     if (optionsMerged.value.items === undefined) {

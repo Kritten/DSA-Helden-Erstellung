@@ -1,4 +1,5 @@
 <template>
+  {{ data }}
   <q-stepper
     v-model="stepCurrent"
     color="primary"
@@ -8,18 +9,21 @@
     <q-step
       v-for="(step, index) in config.steps"
       :key="index"
-      :name="index"
+      :name="step.id"
       :title="step.title"
     >
-      <step :step="step" />
+      <step
+        :step="step"
+      />
     </q-step>
   </q-stepper>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { Config } from '@/modules/creator/config';
 import Step from '@/modules/creator/wizard/components/step.vue';
+import { useWizard } from '@/modules/creator/wizard/useWizard';
 
 export default defineComponent({
   name: 'Wizard',
@@ -30,10 +34,15 @@ export default defineComponent({
       type: Object as PropType<Config>,
     },
   },
-  setup() {
-    const stepCurrent = ref(0);
+  setup(props) {
+    const { setConfig, stepCurrent, data } = useWizard();
 
-    return { stepCurrent };
+    setConfig(props.config);
+
+    return {
+      stepCurrent,
+      data,
+    };
   },
 });
 </script>

@@ -12,6 +12,7 @@ export type Section = {
 }
 
 export type Step = {
+  id: string;
   title: string;
   description: string;
   sections?: Array<Section>;

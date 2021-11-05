@@ -26,6 +26,7 @@ export interface JSONSchemaFurDieDSAHeldenErstellung {
   steps: StepJson[];
 }
 export interface StepJson {
+  id: string;
   title: string;
   description: string;
   sections?: SectionJson[];

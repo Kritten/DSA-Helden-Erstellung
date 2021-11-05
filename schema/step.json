@@ -4,6 +4,9 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
+        "id": {
+            "type": "string"
+        },
         "title": {
             "type": "string"
         },
@@ -18,6 +21,7 @@
         }
     },
     "required": [
+        "id",
         "title",
         "description"
     ]
