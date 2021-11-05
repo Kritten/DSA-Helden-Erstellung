@@ -1,6 +1,5 @@
 import { compileFromFile } from 'json-schema-to-typescript';
-import { writeFileSync } from 'fs';
-import { execSync } from 'child_process';
+import { ESLint } from 'eslint';
 
 void compileFromFile('./schema/schema.json', {
   cwd: './schema',
@@ -16,8 +15,12 @@ void compileFromFile('./schema/schema.json', {
    */`,
 
   format: false,
-}).then((ts) => {
-  writeFileSync('src/modules/creator/schema-generated.types.d.ts', ts);
+}).then(async (ts) => {
+  const eslint = new ESLint({ fix: true });
 
-  execSync('npx eslint ./src/modules/creator/schema-generated.types.d.ts --fix');
+  const result = await eslint.lintText(ts, {
+    filePath: './src/modules/creator/schema.types.d.ts',
+  });
+
+  void ESLint.outputFixes(result);
 });
