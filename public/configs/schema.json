@@ -18,68 +18,100 @@
           "description": {
             "type": "string"
           },
-          "fields": {
+          "sections": {
             "type": "array",
             "items": {
               "type": "object",
-              "if": {
-                "properties": {
-                  "type": {
-                    "const": "select"
+              "additionalProperties": false,
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "if": {
+                      "properties": {
+                        "type": {
+                          "const": "select"
+                        }
+                      }
+                    },
+                    "then": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string",
+                          "oneOf": [
+                            {
+                              "const": "text"
+                            },
+                            {
+                              "const": "number"
+                            },
+                            {
+                              "const": "select"
+                            }
+                          ]
+                        },
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "label",
+                        "type",
+                        "data"
+                      ]
+                    },
+                    "else": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "type": "string",
+                          "oneOf": [
+                            {
+                              "const": "text"
+                            },
+                            {
+                              "const": "number"
+                            },
+                            {
+                              "const": "select"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "label",
+                        "type"
+                      ]
+                    }
                   }
                 }
               },
-              "then": {
-                "additionalProperties": false,
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "oneOf": [
-                      {
-                        "const": "text"
-                      },
-                      {
-                        "const": "number"
-                      },
-                      {
-                        "const": "select"
-                      }
-                    ]
-                  },
-                  "data": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "required": [
-                  "type",
-                  "data"
-                ]
-              },
-              "else": {
-                "additionalProperties": false,
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "oneOf": [
-                      {
-                        "const": "text"
-                      },
-                      {
-                        "const": "number"
-                      },
-                      {
-                        "const": "select"
-                      }
-                    ]
-                  }
-                },
-                "required": [
-                  "type"
-                ]
-              }
+              "required": []
             }
           }
         },
