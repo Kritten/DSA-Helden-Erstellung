@@ -10,7 +10,7 @@
 		"typescript.tsdk": "node_modules/typescript/lib",
 		"vetur.experimental.templateInterpolationService": true,
 		"yaml.schemas": {
-			"./public/configs/schema.json": "/public/configs/*.yaml"
+			"./schema/schema.json": "/public/configs/*.yaml"
 		}
 	}
 }

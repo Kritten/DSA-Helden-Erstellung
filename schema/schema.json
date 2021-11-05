@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "schema.json",
+  "title": "JSON Schema für die DSA Helden Erstellung",
+  "description": "JSON Schema für die DSA Helden Erstellung",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "steps": {
+      "type": "array",
+      "description": "Die einzelnen Schritte der Erstellung",
+      "items": {
+        "$ref": "step.json"
+      }
+    }
+  },
+  "required": [
+    "steps"
+  ]
+}

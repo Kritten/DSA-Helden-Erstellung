@@ -1,0 +1,62 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "field.json",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "id": {
+            "$ref": "#/$defs/id"
+        },
+        "label": {
+            "$ref": "#/$defs/label"
+        },
+        "type": {
+            "$ref": "#/$defs/type"
+        },
+        "data": {
+            "$ref": "#/$defs/data"
+        }
+    },
+    "required": [
+        "id",
+        "label",
+        "type"
+    ],
+    "anyOf": [
+        {
+            "not": {
+                "properties": {
+                    "type": {
+                        "const": "select"
+                    }
+                }
+            }
+        },
+        {
+            "required": [
+                "data"
+            ]
+        }
+    ],
+    "$defs": {
+        "id": {
+            "type": "string"
+        },
+        "label": {
+            "type": "string"
+        },
+        "type": {
+            "enum": [
+                "text",
+                "number",
+                "select"
+            ]
+        },
+        "data": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    }
+}

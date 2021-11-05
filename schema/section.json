@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "id": "section.json",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "array",
+            "items": {
+                "$ref": "field.json"
+            }
+        }
+    },
+    "required": []
+}
