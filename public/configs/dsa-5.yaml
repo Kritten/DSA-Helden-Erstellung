@@ -67,8 +67,32 @@ steps:
                   value: 17
                 - expression: Legendär
                   value: 18
-          - id: intelligenz
-            label: Intelligenz (IN)
+          - id: klugheit
+            label: Klugheit (KL)
+            type: number
+            maximum: *experience
+          - id: intuition
+            label: Intuition (IN)
+            type: number
+            maximum: *experience
+          - id: charisma
+            label: Charisma (CH)
+            type: number
+            maximum: *experience
+          - id: fingerfertigkeit
+            label: Fingerfertigkeit (FF)
+            type: number
+            maximum: *experience
+          - id: gewandheit
+            label: Gewandheit (GE)
+            type: number
+            maximum: *experience
+          - id: konstitution
+            label: Konstitution (KO)
+            type: number
+            maximum: *experience
+          - id: körperkraft
+            label: Körperkraft (KK)
             type: number
             maximum: *experience
   - id: profession
