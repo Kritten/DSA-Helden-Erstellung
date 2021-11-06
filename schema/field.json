@@ -15,6 +15,26 @@
         },
         "data": {
             "$ref": "#/$defs/data"
+        },
+        "minimum": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "$ref": "utilities/switchCase.json"
+                }
+            ]
+        },
+        "maximum": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "$ref": "utilities/switchCase.json"
+                }
+            ]
         }
     },
     "required": [
