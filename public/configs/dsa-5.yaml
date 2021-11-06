@@ -1,10 +1,10 @@
 steps:
-  - id: experience
+  - id: step-experience
     title: Erfahrungsgrad
     description: In diesem Schritt wird der Erfahrungsgrad ausgewählt
     sections:
       - fields:
-          - id: experience
+          - id: field-experience
             label: Erfahrungsgrad
             type: select
             data:
@@ -15,12 +15,12 @@ steps:
               - Meisterlich
               - Brilliant
               - Legendär
-  - id: species
+  - id: step-species
     title: Spezies
     description: In diesem Schritt wird die Spezies ausgewählt
     sections:
       - fields:
-          - id: species
+          - id: field-species
             label: Spezies
             type: select
             data:
@@ -28,19 +28,19 @@ steps:
               - Elf
               - Halbelf
               - Zwerg
-  - id: culture
+  - id: step-culture
     title: Kultur
     description: In diesem Schritt kann eine Kultur gewählt werden. Ein Kulturpaket ist optional
-  - id: property-points
+  - id: step-property-points
     title: Eigenschaftspunkte
     description: In diesem Schritt werden die Eigenschaftspunkte verteilt
     sections:
       - fields:
-          - id: mut
+          - id: field-mut
             label: Mut (MU)
             type: number
             maximum: &experience
-              switch: experience
+              switch: field-experience
               cases:
                 - expression: Unerfahren
                   value: 12
@@ -56,55 +56,55 @@ steps:
                   value: 17
                 - expression: Legendär
                   value: 18
-          - id: klugheit
+          - id: field-klugheit
             label: Klugheit (KL)
             type: number
             maximum: *experience
-          - id: intuition
+          - id: field-intuition
             label: Intuition (IN)
             type: number
             maximum: *experience
-          - id: charisma
+          - id: field-charisma
             label: Charisma (CH)
             type: number
             maximum: *experience
-          - id: fingerfertigkeit
+          - id: field-fingerfertigkeit
             label: Fingerfertigkeit (FF)
             type: number
             maximum: *experience
-          - id: gewandheit
+          - id: field-gewandheit
             label: Gewandheit (GE)
             type: number
             maximum: *experience
-          - id: konstitution
+          - id: field-konstitution
             label: Konstitution (KO)
             type: number
             maximum: *experience
-          - id: körperkraft
+          - id: field-körperkraft
             label: Körperkraft (KK)
             type: number
             maximum: *experience
-  - id: profession
+  - id: step-profession
     title: Profession
     description: In diesem Schritt kann eine Profession gewählt werden. Ein Professionspaket ist optional
-  - id: benefits
+  - id: step-benefits
     title: Vorteile
     description: In diesem Schritt können Vorteile ausgewählt werden
-  - id: drawbacks
+  - id: step-drawbacks
     title: Nachteile
     description: In diesem Schritt können Nachteile ausgewählt werden
-  - id: gains
+  - id: step-gains
     title: Steigerungen
     description: In diesem Schritt werden Fähigkeiten und Kampftechniken gesteigert
-  - id: special-abilities
+  - id: step-special-abilities
     title: Sonderfertigkeiten
     description: In diesem Schritt können Sonderfertigkeiten ausgewählt werden
-  - id: base-values
+  - id: step-base-values
     title: Basiswerte
     description: In diesem Schritt werden die Basiswerte aufgeschlüsselt
-  - id: equipment
+  - id: step-equipment
     title: Ausrüstung
     description: In diesem Schritt kann Ausrüstung gekauft werden.
-  - id: name
+  - id: step-name
     title: Name
     description: Der Name des Helden

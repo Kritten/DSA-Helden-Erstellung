@@ -14,6 +14,8 @@ export type FieldJson = (({
   label: string;
   type: ('text' | 'number' | 'select');
   data?: string[];
+  minimum?: (number | SwitchCaseJson);
+  maximum?: (number | SwitchCaseJson);
 })
 
 /**
@@ -35,4 +37,11 @@ export interface SectionJson {
   title?: string;
   description?: string;
   fields?: FieldJson[];
+}
+export interface SwitchCaseJson {
+  switch?: string;
+  cases?: {
+    expression?: string;
+    value?: (number | string | boolean);
+  }[];
 }

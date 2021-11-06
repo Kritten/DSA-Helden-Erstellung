@@ -55,6 +55,14 @@ export default defineComponent({
       }));
     }
 
+    if (props.field.maximum !== undefined) {
+      if (typeof props.field.maximum !== 'number') {
+        if (props.field.maximum.switch !== undefined) {
+          console.warn(props.field.maximum);
+        }
+      }
+    }
+
     return {
       items,
       dataStep,
