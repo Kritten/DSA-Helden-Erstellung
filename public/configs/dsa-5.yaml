@@ -45,6 +45,28 @@ steps:
   - id: property-points
     title: Eigenschaftspunkte
     description: In diesem Schritt werden die Eigenschaftspunkte verteilt
+    sections:
+      - fields:
+          - id: mut
+            label: Mut (MU)
+            type: number
+            maximum:
+              switch: experience
+              cases:
+                - expression: Unerfahren
+                  value: 12
+                - expression: Durschnittlich
+                  value: 13
+                - expression: Erfahren
+                  value: 14
+                - expression: Kompetent
+                  value: 15
+                - expression: Meisterlich
+                  value: 16
+                - expression: Brillant
+                  value: 17
+                - expression: Legendär
+                  value: 18
   - id: profession
     title: Profession
     description: In diesem Schritt kann eine Profession gewählt werden. Ein Professionspaket ist optional
