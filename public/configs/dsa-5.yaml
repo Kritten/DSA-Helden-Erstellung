@@ -1,28 +1,4 @@
 steps:
-  - id: class
-    title: Klasse
-    description: In diesem Schritt wird die Klasse ausgewählt
-    sections:
-      - fields:
-          - id: class
-            label: Klasse
-            type: select
-            data:
-              - Zauberer
-              - Krieger
-  - id: species
-    title: Spezies
-    description: In diesem Schritt wird die Spezies ausgewählt
-    sections:
-      - fields:
-          - id: species
-            label: Spezies
-            type: select
-            data:
-              - Mensch
-              - Elf
-              - Halbelf
-              - Zwerg
   - id: experience
     title: Erfahrungsgrad
     description: In diesem Schritt wird der Erfahrungsgrad ausgewählt
@@ -39,6 +15,19 @@ steps:
               - Meisterlich
               - Brilliant
               - Legendär
+  - id: species
+    title: Spezies
+    description: In diesem Schritt wird die Spezies ausgewählt
+    sections:
+      - fields:
+          - id: species
+            label: Spezies
+            type: select
+            data:
+              - Mensch
+              - Elf
+              - Halbelf
+              - Zwerg
   - id: culture
     title: Kultur
     description: In diesem Schritt kann eine Kultur gewählt werden. Ein Kulturpaket ist optional
