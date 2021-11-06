@@ -50,7 +50,7 @@ steps:
           - id: mut
             label: Mut (MU)
             type: number
-            maximum:
+            maximum: &experience
               switch: experience
               cases:
                 - expression: Unerfahren
@@ -67,6 +67,10 @@ steps:
                   value: 17
                 - expression: Legendär
                   value: 18
+          - id: intelligenz
+            label: Intelligenz (IN)
+            type: number
+            maximum: *experience
   - id: profession
     title: Profession
     description: In diesem Schritt kann eine Profession gewählt werden. Ein Professionspaket ist optional
