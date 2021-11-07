@@ -35,7 +35,6 @@ import { defineComponent, PropType } from 'vue';
 import { Step } from '@/modules/creator/config.types';
 import Section from '@/modules/creator/wizard/components/section.vue';
 import BaseCard from '@/modules/app/base/base-card.vue';
-import { useWizard } from '@/modules/creator/wizard/useWizard';
 
 export default defineComponent({
   name: 'Step',
@@ -50,10 +49,7 @@ export default defineComponent({
     },
   },
   setup() {
-    const { dataStep } = useWizard();
-
     return {
-      dataStep,
     };
   },
 });

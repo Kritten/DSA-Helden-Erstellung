@@ -1,29 +1,33 @@
 <template>
   <template v-if="field.type === 'text'">
     <base-input-text
-      v-model="dataStep[field.id]"
+      v-model="valueField"
       :options="{label: field.label}"
+      :validation="validation[field.id]"
     />
   </template>
   <template v-else-if="field.type === 'number'">
     <base-input-number
-      v-model="dataStep[field.id]"
+      v-model="valueField"
       :options="{label: field.label}"
+      :validation="validation[field.id]"
     />
   </template>
   <template v-else-if="field.type === 'select'">
     <base-input-select
-      v-model="dataStep[field.id]"
+      v-model="valueField"
       :options="{
         label: field.label,
         items,
       }"
+      :validation="validation[field.id]"
     />
   </template>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, computed } from 'vue';
+import { useVuelidate } from '@vuelidate/core';
 import { Field } from '@/modules/creator/config.types';
 import baseInputText from '@/modules/app/base/inputs/base-input-text.vue';
 import BaseInputNumber from '@/modules/app/base/inputs/base-input-number.vue';
@@ -44,7 +48,42 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { dataStep } = useWizard();
+    const { data, mapFields } = useWizard();
+
+    const field = mapFields.get(props.field.id);
+
+    if (field === undefined) {
+      throw Error('Field not found');
+    }
+
+    const valueField = computed<unknown>({
+      get: () => {
+        if (data.value === undefined) {
+          throw Error('Field not found');
+        }
+
+        const stepData = data.value[field.info.step.id];
+        const fieldData = stepData[props.field.id];
+
+        return fieldData;
+      },
+      set: (newValue) => {
+        if (data.value === undefined) {
+          throw Error('Field not found');
+        }
+
+        data.value[field.info.step.id][props.field.id] = newValue;
+      },
+    });
+
+    const validationField = computed(() => ({
+      [props.field.id]: field.validation,
+    }));
+
+    const validation = useVuelidate(
+      validationField,
+      { [props.field.id]: valueField },
+    );
 
     let items: Array<{value: string; label: string}> = [];
 
@@ -64,8 +103,10 @@ export default defineComponent({
     }
 
     return {
+      data,
       items,
-      dataStep,
+      validation,
+      valueField,
     };
   },
 });

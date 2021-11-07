@@ -1,20 +1,22 @@
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
+import { required } from '@vuelidate/validators';
+import { ValidationArgs } from '@vuelidate/core';
 import { Config } from '@/modules/creator/config';
-import { WizardData } from '@/modules/creator/data.types';
+import {
+  StepData, WizardData,
+} from '@/modules/creator/data.types';
 import { Section, Step } from '@/modules/creator/config.types';
 
 const mapEntites = new Map<string, unknown>();
+const mapFields = new Map<string, {
+  info: {step: Step;
+    section: Section;
+  }; validation: ValidationArgs;}>();
 
 let config: Config;
 const stepCurrent = ref<string>();
 const data = ref<WizardData>();
-const dataStep = computed(() => {
-  if (data.value === undefined || stepCurrent.value === undefined) {
-    return {};
-  }
-
-  return data.value[stepCurrent.value];
-});
+const validation = ref<ValidationArgs>();
 
 const setId = (entity: {id: string}) => {
   if (entity.id !== undefined) {
@@ -46,39 +48,105 @@ const collectIds = (configPassed: Config) => {
   }
 };
 
-const generateDataForSection = (section: Section) => {
+const generateDataForSection = (section: Section, step: Step): {
+  data: StepData;
+  validation: ValidationArgs;
+} => {
   if (section.fields === undefined) {
-    return {};
+    return {
+      data: {},
+      validation: {},
+    };
   }
 
-  return section.fields.reduce((obj, field) => ({
-    ...obj,
-    [field.id]: null,
-  }), {});
+  return section.fields.reduce((obj, field) => {
+    const dataField = null;
+    const validationField = {
+      required,
+    };
+
+    mapFields.set(field.id, {
+      info: {
+        step,
+        section,
+      },
+      validation: validationField,
+    });
+
+    obj.data[field.id] = dataField;
+    obj.validation[field.id] = validationField;
+
+    return obj;
+  }, {
+    data: {},
+    validation: {},
+  } as {
+    data: StepData;
+    validation: ValidationArgs;
+  });
 };
 
-const generateDataForStep = (step: Step) => {
+const generateDataForStep = (step: Step): {
+  data: StepData;
+  validation: ValidationArgs;
+} => {
   if (step.sections === undefined) {
-    return {};
+    return {
+      data: {},
+      validation: {},
+    };
   }
 
-  return step.sections.reduce((obj, section) => ({
-    ...obj,
-    ...generateDataForSection(section),
-  }), {});
+  return step.sections.reduce((obj, section) => {
+    const result = generateDataForSection(section, step);
+    obj.data = {
+      ...obj.data,
+      ...result.data,
+    };
+    obj.validation = {
+      ...obj.validation,
+      ...result.validation,
+    };
+
+    return obj;
+  }, {
+    data: {},
+    validation: {},
+  } as {
+    data: StepData;
+    validation: ValidationArgs;
+  });
 };
 
 const setConfig = (configPassed: Config) => {
   config = configPassed;
 
   collectIds(config);
+  // eslint-disable-next-line no-console
   console.warn('mapEntites', mapEntites);
 
-  data.value = config.steps.reduce((obj, step) => {
-    obj[step.id] = generateDataForStep(step);
+  const collectedResult = config.steps.reduce((obj, step) => {
+    const result = generateDataForStep(step);
+
+    obj.data[step.id] = result.data;
+    obj.validation[step.id] = result.validation;
 
     return obj;
-  }, {} as WizardData);
+  }, {
+    data: {},
+    validation: {},
+  } as {
+    data: WizardData;
+    validation: ValidationArgs;
+  });
+
+  // eslint-disable-next-line no-console
+  console.warn('collectedResult', collectedResult);
+  // eslint-disable-next-line no-console
+  console.warn('mapFields', mapFields);
+
+  data.value = collectedResult.data;
+  validation.value = collectedResult.validation;
 
   stepCurrent.value = config.steps[0].id;
 };
@@ -86,6 +154,7 @@ const setConfig = (configPassed: Config) => {
 export const useWizard = () => ({
   setConfig,
   stepCurrent,
-  dataStep,
   data,
+  validation,
+  mapFields,
 });

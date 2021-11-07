@@ -5,7 +5,6 @@
     color="primary"
     animated
     vertical
-    header-nav
   >
     <q-step
       v-for="(step, index) in config.steps"
@@ -23,14 +22,14 @@
         <q-btn
           color="primary"
           :label="t('common.continue')"
-          @click="$refs.stepper.next()"
+          @click="next"
         />
         <q-btn
           flat
           color="primary"
           :label="t('common.back')"
           class="q-ml-sm"
-          @click="$refs.stepper.previous()"
+          @click="back"
         />
       </q-stepper-navigation>
     </template>
@@ -40,8 +39,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useVuelidate } from '@vuelidate/core';
+import { QStepper } from 'quasar';
 import { Config } from '@/modules/creator/config';
 import Step from '@/modules/creator/wizard/components/step.vue';
 import { useWizard } from '@/modules/creator/wizard/useWizard';
@@ -57,14 +58,40 @@ export default defineComponent({
   },
   setup(props) {
     const { t } = useI18n();
-    const { setConfig, stepCurrent, data } = useWizard();
+    const {
+      setConfig, stepCurrent, data,
+    } = useWizard();
+
+    const stepper = ref<QStepper | null>(null);
 
     setConfig(props.config);
+
+    const vuelidate = useVuelidate();
+
+    const next = async () => {
+      vuelidate.value.$touch();
+      const isValid = await vuelidate.value.$validate();
+
+      if (isValid) {
+        if (stepper.value !== null) {
+          stepper.value.next();
+        }
+      }
+    };
+    const back = () => {
+      if (stepper.value !== null) {
+        stepper.value.previous();
+      }
+    };
 
     return {
       t,
       stepCurrent,
       data,
+      vuelidate,
+      next,
+      back,
+      stepper,
     };
   },
 });
