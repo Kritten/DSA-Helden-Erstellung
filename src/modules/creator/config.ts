@@ -1,8 +1,7 @@
-import { Step } from '@/modules/creator/config.types';
-import { JSONSchemaFurDieDSAHeldenErstellung } from '@/modules/creator/schema.types';
+import { JSONSchemaFurDieDSAHeldenErstellung, StepJson } from '@/modules/creator/schema.types';
 
 export class Config {
-  public steps: Array<Step>;
+  public steps: Array<StepJson>;
 
   constructor(parsedConfig: JSONSchemaFurDieDSAHeldenErstellung) {
     this.steps = parsedConfig.steps;

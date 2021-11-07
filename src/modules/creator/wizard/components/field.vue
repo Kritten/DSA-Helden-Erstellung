@@ -1,23 +1,23 @@
 <template>
-  <template v-if="field.type === 'text'">
+  <template v-if="field.config.type === 'text'">
     <base-input-text
-      v-model="valueField"
-      :options="{label: field.label}"
+      v-model="valueField.value"
+      :options="{label: field.config.label}"
       :validation="validation[field.id]"
     />
   </template>
-  <template v-else-if="field.type === 'number'">
+  <template v-else-if="field.config.type === 'number'">
     <base-input-number
-      v-model="valueField"
-      :options="{label: field.label}"
+      v-model="valueField.value"
+      :options="{label: field.config.label}"
       :validation="validation[field.id]"
     />
   </template>
-  <template v-else-if="field.type === 'select'">
+  <template v-else-if="field.config.type === 'select'">
     <base-input-select
-      v-model="valueField"
+      v-model="valueField.value"
       :options="{
-        label: field.label,
+        label: field.config.label,
         items,
       }"
       :validation="validation[field.id]"
@@ -26,8 +26,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, computed } from 'vue';
-import { useVuelidate } from '@vuelidate/core';
+import {
+  defineComponent, PropType, computed,
+} from 'vue';
+import { useVuelidate, ValidationArgs } from '@vuelidate/core';
 import { Field } from '@/modules/creator/config.types';
 import baseInputText from '@/modules/app/base/inputs/base-input-text.vue';
 import BaseInputNumber from '@/modules/app/base/inputs/base-input-number.vue';
@@ -48,7 +50,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { data, mapFields } = useWizard();
+    const { mapFields } = useWizard();
 
     const field = mapFields.get(props.field.id);
 
@@ -56,54 +58,32 @@ export default defineComponent({
       throw Error('Field not found');
     }
 
-    const valueField = computed<unknown>({
-      get: () => {
-        if (data.value === undefined) {
-          throw Error('Field not found');
-        }
-
-        const stepData = data.value[field.info.step.id];
-        const fieldData = stepData[props.field.id];
-
-        return fieldData;
-      },
+    const valueField = computed({
+      get: () => field.value,
       set: (newValue) => {
-        if (data.value === undefined) {
-          throw Error('Field not found');
-        }
-
-        data.value[field.info.step.id][props.field.id] = newValue;
+        field.value.value = newValue;
       },
     });
 
     const validationField = computed(() => ({
-      [props.field.id]: field.validation,
+      [props.field.id]: field.validation as ValidationArgs,
     }));
 
     const validation = useVuelidate(
       validationField,
-      { [props.field.id]: valueField },
+      { [props.field.id]: valueField.value },
     );
 
     let items: Array<{value: string; label: string}> = [];
 
-    if (props.field.data !== undefined) {
-      items = props.field.data.map((value) => ({
+    if (props.field.config.data !== undefined) {
+      items = props.field.config.data.map((value) => ({
         label: value,
         value,
       }));
     }
 
-    if (props.field.maximum !== undefined) {
-      if (typeof props.field.maximum !== 'number') {
-        if (props.field.maximum.switch !== undefined) {
-          console.warn(props.field.maximum);
-        }
-      }
-    }
-
     return {
-      data,
       items,
       validation,
       valueField,

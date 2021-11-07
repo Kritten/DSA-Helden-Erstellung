@@ -7,10 +7,10 @@
     vertical
   >
     <q-step
-      v-for="(step, index) in config.steps"
+      v-for="(step, index) in steps"
       :key="index"
       :name="step.id"
-      :title="step.title"
+      :title="step.config.title"
     >
       <step
         :step="step"
@@ -35,11 +35,13 @@
     </template>
   </q-stepper>
 
-  <pre>{{ data }}</pre>
+  <pre>{{ wizardData }}</pre>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
+import {
+  defineComponent, PropType, ref, computed,
+} from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useVuelidate } from '@vuelidate/core';
 import { QStepper } from 'quasar';
@@ -59,8 +61,19 @@ export default defineComponent({
   setup(props) {
     const { t } = useI18n();
     const {
-      setConfig, stepCurrent, data,
+      setConfig, stepCurrent, steps,
     } = useWizard();
+
+    const wizardData = computed(() => steps.value.reduce((obj, step) => {
+      obj[step.id] = step.sections.reduce((objSections, section) => ({
+        ...objSections,
+        ...section.fields.reduce((objFields, field) => {
+          objFields[field.id] = field.value;
+          return objFields;
+        }, {} as Record<string, unknown>),
+      }), {} as Record<string, unknown>);
+      return obj;
+    }, {} as Record<string, unknown>));
 
     const stepper = ref<QStepper | null>(null);
 
@@ -87,11 +100,12 @@ export default defineComponent({
     return {
       t,
       stepCurrent,
-      data,
       vuelidate,
       next,
       back,
       stepper,
+      steps,
+      wizardData,
     };
   },
 });

@@ -1,29 +1,26 @@
-export interface SwitchCase {
-  switch?: string;
-  cases?: {
-    expression?: string;
-    value?: (number | string | boolean);
-  }[];
-}
+import { Ref } from 'vue';
+// import { ValidationArgs } from '@vuelidate/core';
+import { FieldJson, SectionJson, StepJson } from '@/modules/creator/schema.types';
 
-export type Field = {
+type Field = {
   id: string;
-  label: string;
-  type: 'select' | 'number' | 'text';
-  data?: Array<string>;
-  minimum?: (number | SwitchCase);
-  maximum?: (number | SwitchCase);
+  config: FieldJson;
+  // eslint-disable-next-line no-use-before-define
+  section: Section;
+  // eslint-disable-next-line no-use-before-define
+  step: Step;
+  value: Ref<unknown>;
+  // validation: ValidationArgs;
+  validation: Record<string, unknown>;
 }
 
 export type Section = {
-  title?: string;
-  description?: string;
-  fields?: Array<Field>;
+  config: SectionJson;
+  fields: Array<Field>;
 }
 
 export type Step = {
   id: string;
-  title: string;
-  description: string;
-  sections?: Array<Section>;
+  config: StepJson;
+  sections: Array<Section>;
 }
