@@ -138,8 +138,6 @@ export default defineComponent({
       optionsMerged.value.inputDebounce = 0;
     }
 
-    console.warn(filterInternal);
-
     return {
       baseInput,
       qSelect,

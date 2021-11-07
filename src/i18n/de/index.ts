@@ -4,6 +4,7 @@ export default {
     github: 'GitHub',
     continue: 'Weiter',
     back: 'Zurück',
+    required: 'Pflichtfeld',
   },
   app: {
     label: 'DSA Helden Erstellung',
@@ -31,5 +32,8 @@ export default {
   },
   about: {
     label: 'Info',
+  },
+  validator: {
+    required: 'Dieses Feld ist ein Pflichtfeld',
   },
 };

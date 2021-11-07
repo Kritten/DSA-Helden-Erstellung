@@ -52,7 +52,9 @@ export default defineComponent({
   setup() {
     const { dataStep } = useWizard();
 
-    return { dataStep };
+    return {
+      dataStep,
+    };
   },
 });
 </script>

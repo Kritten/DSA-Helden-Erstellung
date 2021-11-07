@@ -9,7 +9,7 @@ steps:
             type: select
             data:
               - Unerfahren
-              - Durschnittlich
+              - Durchschnittlich
               - Erfahren
               - Kompetent
               - Meisterlich
